@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Diva Irma Ayunita — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#F4F5F2;
+    --card:#FFFFFF;
+    --ink:#1D2230;
+    --slate:#767D8A;
+    --line:#DEE1DB;
+    --coral:#FF6B4A;
+    --coral-soft:rgba(255,107,74,.10);
+    --teal:#1F9C8E;
+    --teal-soft:rgba(31,156,142,.10);
+    --radius:16px;
+    --maxw:880px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+    line-height:1.15;
+  }
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+  }
+  a{color:var(--ink);text-decoration:none;}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--coral);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+  img{display:block;max-width:100%;}
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(244,245,242,.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:16px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .nav-logo{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.8rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .nav-links{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.78rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+  }
+  .nav-links a{
+    color:var(--slate);
+    transition:color .15s ease;
+    padding:4px 0;
+    border-bottom:2px solid transparent;
+  }
+  .nav-links a:hover{
+    color:var(--ink);
+    border-bottom-color:var(--coral);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:72px 0 56px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.78rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem,6vw,3.6rem);
+    margin-bottom:18px;
+  }
+  .hero p.lede{
+    max-width:60ch;
+    font-size:1.1rem;
+    color:#3B4150;
+    margin-bottom:40px;
+  }
+
+  /* Signature: process strip */
+  .process-strip{
+    display:flex;
+    align-items:center;
+    margin-bottom:40px;
+  }
+  .process-step{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    flex:0 0 auto;
+  }
+  .process-node{
+    width:12px;height:12px;border-radius:50%;
+    background:var(--coral);
+    box-shadow:0 0 0 4px var(--coral-soft);
+    opacity:0;
+    animation:pop .5s ease forwards;
+  }
+  .process-step:nth-child(odd) .process-node{background:var(--coral);box-shadow:0 0 0 4px var(--coral-soft);}
+  .process-step:nth-child(even) .process-node{background:var(--teal);box-shadow:0 0 0 4px var(--teal-soft);}
+  .process-step:nth-child(1) .process-node{animation-delay:.05s;}
+  .process-step:nth-child(2) .process-node{animation-delay:.20s;}
+  .process-step:nth-child(3) .process-node{animation-delay:.35s;}
+  .process-step:nth-child(4) .process-node{animation-delay:.50s;}
+  .process-step:nth-child(5) .process-node{animation-delay:.65s;}
+  @keyframes pop{
+    from{opacity:0;transform:scale(.4);}
+    to{opacity:1;transform:scale(1);}
+  }
+  .process-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--slate);
+    white-space:nowrap;
+  }
+  .process-line{
+    flex:1 1 auto;
+    height:1px;
+    background:var(--line);
+    margin:0 10px;
+    transform:translateY(-12px);
+  }
+
+  .hero-links{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .pill-link{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.8rem;
+    letter-spacing:.04em;
+    padding:10px 18px;
+    border:1px solid var(--ink);
+    border-radius:999px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .pill-link:hover{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .pill-link.primary{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .pill-link.primary:hover{
+    background:var(--coral);
+    border-color:var(--coral);
+    color:var(--ink);
+  }
+
+  /* ---------- SECTIONS ---------- */
+  .section{
+    padding:64px 0;
+    border-top:1px solid var(--line);
+    scroll-margin-top:70px;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:24px;
+    margin-bottom:32px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-size:clamp(1.5rem,4vw,2.1rem);
+  }
+  .section-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.78rem;
+    color:var(--slate);
+    letter-spacing:.1em;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:48px;
+  }
+  .about-text p{
+    margin-bottom:18px;
+    color:#3B4150;
+  }
+  .about-text p:last-child{margin-bottom:0;}
+  .fact-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .fact{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--card);
+    padding:18px 20px;
+  }
+  .fact-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.7rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:6px;
+  }
+  .fact-value{
+    font-weight:600;
+    font-size:.98rem;
+  }
+
+  /* ---------- TOOLKIT ---------- */
+  .toolkit-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .toolkit-group{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--card);
+    padding:24px;
+  }
+  .toolkit-group h3{
+    font-size:1rem;
+    margin-bottom:6px;
+  }
+  .toolkit-group .group-note{
+    font-size:.88rem;
+    color:var(--slate);
+    margin-bottom:16px;
+  }
+  .chip-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.76rem;
+    padding:6px 12px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:var(--paper);
+  }
+  .toolkit-group.accent-coral{border-color:var(--coral);}
+  .toolkit-group.accent-coral .chip{border-color:var(--coral-soft);background:var(--coral-soft);}
+  .toolkit-group.accent-teal{border-color:var(--teal);}
+  .toolkit-group.accent-teal .chip{border-color:var(--teal-soft);background:var(--teal-soft);}
+
+  /* ---------- PROJECTS ---------- */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+  }
+  .project-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--card);
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .project-card.wip{
+    border-style:dashed;
+    grid-column:1 / -1;
+  }
+  .project-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--slate);
+  }
+  .project-tag .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--coral);
+  }
+  .project-card.wip .project-tag .dot{background:var(--teal);}
+  .project-card h3{
+    font-size:1.2rem;
+  }
+  .project-card p{
+    color:#3B4150;
+    font-size:.96rem;
+  }
+  .mini-pipeline{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:6px;
+    margin-top:auto;
+    padding-top:8px;
+  }
+  .mini-pipeline .step{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.72rem;
+    padding:5px 10px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--ink);
+  }
+  .mini-pipeline .arrow{
+    color:var(--slate);
+    font-size:.8rem;
+  }
+  .role-line{
+    font-size:.86rem;
+    color:var(--slate);
+    border-top:1px solid var(--line);
+    padding-top:14px;
+  }
+  .role-line b{color:var(--ink);font-weight:600;}
+
+  /* ---------- EXPERIENCE ---------- */
+  .exp-current{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--card);
+    padding:28px;
+    margin-bottom:28px;
+  }
+  .exp-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:6px;
+  }
+  .exp-head h3{font-size:1.15rem;}
+  .exp-meta{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.78rem;
+    color:var(--slate);
+  }
+  .exp-sub{
+    font-size:.92rem;
+    color:var(--slate);
+    margin-bottom:18px;
+  }
+  .exp-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .exp-list li{
+    padding-left:22px;
+    position:relative;
+    font-size:.95rem;
+    color:#3B4150;
+  }
+  .exp-list li::before{
+    content:"→";
+    position:absolute;
+    left:0;
+    color:var(--coral);
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .exp-list li.wip-line::before{
+    content:"⋯";
+    color:var(--teal);
+  }
+  .exp-earlier{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .exp-row{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:8px;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+    align-items:baseline;
+  }
+  .exp-row:last-child{border-bottom:1px solid var(--line);}
+  .exp-row .role{font-weight:600;font-size:.96rem;}
+  .exp-row .org{color:var(--slate);font-size:.88rem;}
+  .exp-row .when{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.78rem;
+    color:var(--slate);
+    white-space:nowrap;
+    text-align:right;
+  }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--card);
+    padding:28px;
+    margin-bottom:20px;
+  }
+  .edu-card:last-child{margin-bottom:0;}
+  .edu-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:4px;
+  }
+  .edu-head h3{font-size:1.1rem;}
+  .edu-when{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.78rem;
+    color:var(--slate);
+  }
+  .edu-org{
+    color:var(--slate);
+    font-size:.92rem;
+    margin-bottom:16px;
+  }
+  .edu-detail{
+    border-top:1px solid var(--line);
+    padding-top:16px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .edu-detail .label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.7rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:4px;
+  }
+  .edu-detail .value{font-size:.94rem;}
+  .edu-detail .value.thesis-en{
+    color:var(--slate);
+    font-size:.86rem;
+    font-style:italic;
+    margin-top:4px;
+  }
+  .gpa-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.85rem;
+    padding:6px 14px;
+    border-radius:999px;
+    background:var(--coral-soft);
+    border:1px solid var(--coral);
+  }
+
+  /* ---------- CERTS ---------- */
+  .cert-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+  }
+  .cert-group h3{
+    font-size:1rem;
+    margin-bottom:14px;
+  }
+  .cert-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .cert-list li{
+    padding-left:20px;
+    position:relative;
+    font-size:.92rem;
+    color:#3B4150;
+  }
+  .cert-list li::before{
+    content:"";
+    position:absolute;
+    left:0;top:.5em;
+    width:8px;height:8px;
+    border-radius:50%;
+    border:2px solid var(--coral);
+  }
+  .cert-group.teal li::before{border-color:var(--teal);}
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  .contact{
+    padding:72px 0 56px;
+  }
+  .contact h2{
+    font-size:clamp(1.8rem,5vw,2.6rem);
+    margin-bottom:16px;
+  }
+  .contact p.lede{
+    max-width:55ch;
+    color:#3B4150;
+    margin-bottom:32px;
+  }
+  .contact-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-bottom:40px;
+  }
+  .footer-bottom{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.78rem;
+    color:var(--slate);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+    border-top:1px solid var(--line);
+    padding-top:24px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:760px){
+    .about-grid,.toolkit-grid,.projects-grid,.cert-grid{
+      grid-template-columns:1fr;
+    }
+    .project-card.wip{grid-column:auto;}
+    .process-line{display:none;}
+    .process-strip{flex-wrap:wrap;gap:20px 28px;}
+    .nav-links{gap:14px;}
+    .exp-row{grid-template-columns:1fr;}
+    .exp-row .when{text-align:left;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .process-node{animation:none;opacity:1;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">Diva Irma Ayunita</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <p class="eyebrow">Data Analyst — Surabaya, Indonesia</p>
+  <h1>Diva Irma Ayunita</h1>
+  <p class="lede">
+    I turn raw business data into dashboards, reports, and decisions —
+    and lately, I've been directing AI to help me do it faster and go further.
+  </p>
+
+  <div class="process-strip" aria-hidden="true">
+    <div class="process-step">
+      <span class="process-node"></span>
+      <span class="process-label">Collect</span>
+    </div>
+    <div class="process-line"></div>
+    <div class="process-step">
+      <span class="process-node"></span>
+      <span class="process-label">Clean</span>
+    </div>
+    <div class="process-line"></div>
+    <div class="process-step">
+      <span class="process-node"></span>
+      <span class="process-label">Analyze</span>
+    </div>
+    <div class="process-line"></div>
+    <div class="process-step">
+      <span class="process-node"></span>
+      <span class="process-label">Visualize</span>
+    </div>
+    <div class="process-line"></div>
+    <div class="process-step">
+      <span class="process-node"></span>
+      <span class="process-label">Decide</span>
+    </div>
+  </div>
+
+  <div class="hero-links">
+    <a class="pill-link primary" href="mailto:divairmaay@gmail.com">divairmaay@gmail.com</a>
+    <a class="pill-link" href="https://www.linkedin.com/in/divairmaa/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="pill-link" href="https://github.com/divairmaaa" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>About</h2>
+        <span class="section-num mono">01</span>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm a data analyst currently working at GoCement, a supplier of
+            cement and building materials for large-scale projects with major
+            state-owned enterprises (BUMN) and other large clients across
+            Indonesia, where I support business development through market
+            research, pipeline analysis, and feasibility studies.
+          </p>
+          <p>
+            I recently completed my Master's degree in Information Technology
+            Management at Institut Teknologi Sepuluh Nopember (ITS), after
+            finishing a Bachelor's in Telecommunication Engineering at
+            Politeknik Elektronika Negeri Surabaya (PENS).
+          </p>
+          <p>
+            Most of my work has been built around BI and visualization tools —
+            Excel, Power BI, Tableau, and Looker Studio — turning raw data into
+            dashboards that non-technical teams can actually use. More recently,
+            I've started directing AI (Claude, previously ChatGPT) as part of
+            that workflow: automating reports, structuring analyses, and
+            producing technical outputs without writing the code myself.
+          </p>
+          <p>
+            That mix — data analysis, visualization, and AI-directed
+            problem-solving — is part of what's drawing me to Apple Developer
+            Academy. I'd like to learn how to design and build the apps behind
+            the data, not just analyze it.
+          </p>
+        </div>
+        <div class="fact-list">
+          <div class="fact">
+            <div class="fact-label">Currently</div>
+            <div class="fact-value">Data Analyst at GoCement</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Education</div>
+            <div class="fact-value">M.M. Information Technology Management, ITS</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Focus areas</div>
+            <div class="fact-value">Data Analytics &amp; Data Visualization</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Strengths</div>
+            <div class="fact-value">Analytical thinking, problem-solving, leadership, attention to detail, communication</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="toolkit">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Toolkit</h2>
+        <span class="section-num mono">02</span>
+      </div>
+      <div class="toolkit-grid">
+        <div class="toolkit-group accent-coral">
+          <h3>Data &amp; Visualization</h3>
+          <p class="group-note">Daily tools for building dashboards and reports.</p>
+          <div class="chip-row">
+            <span class="chip">Excel</span>
+            <span class="chip">Google Sheets</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">Looker Studio</span>
+          </div>
+        </div>
+        <div class="toolkit-group accent-teal">
+          <h3>AI-Powered Workflow</h3>
+          <p class="group-note">Directing AI to extend what I can build.</p>
+          <div class="chip-row">
+            <span class="chip">Claude</span>
+            <span class="chip">ChatGPT</span>
+            <span class="chip">Prompt Engineering</span>
+            <span class="chip">Automated Reporting</span>
+          </div>
+        </div>
+        <div class="toolkit-group">
+          <h3>Approach</h3>
+          <p class="group-note">How I work, beyond the tools.</p>
+          <div class="chip-row">
+            <span class="chip">Analytical Thinking</span>
+            <span class="chip">Problem-Solving</span>
+            <span class="chip">Leadership</span>
+            <span class="chip">Attention to Detail</span>
+            <span class="chip">Communication</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Featured Projects</h2>
+        <span class="section-num mono">03</span>
+      </div>
+      <p style="max-width:60ch;color:#3B4150;margin-bottom:32px;">
+        A look at how I've been combining data analysis with AI-directed
+        workflows — and the process behind each one.
+      </p>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <span class="project-tag"><span class="dot"></span>Due Diligence Automation</span>
+          <h3>AI-Assisted Corporate Due Diligence</h3>
+          <p>
+            Evaluating new business partners means tracing company ownership
+            through Indonesian legal entity documents (AHU). I designed a
+            workflow where I direct Claude to read these documents, recursively
+            trace shareholder structures across related companies, cross-check
+            findings against public sources, and generate structured PDF
+            reports — complete with ownership maps and risk matrices — using a
+            consistent template refined across multiple companies.
+          </p>
+          <div class="mini-pipeline">
+            <span class="step">Legal Documents</span>
+            <span class="arrow">→</span>
+            <span class="step">AI Shareholder Tracing</span>
+            <span class="arrow">→</span>
+            <span class="step">Risk Report (PDF)</span>
+          </div>
+          <div class="role-line">
+            <b>My role:</b> workflow design, document sourcing, accuracy review, report template standardization
+          </div>
+        </div>
+
+        <div class="project-card">
+          <span class="project-tag"><span class="dot"></span>Market Research</span>
+          <h3>Market Intelligence for New Business Opportunities</h3>
+          <p>
+            When evaluating a new national program as a potential market
+            opportunity, I defined the research questions and directed an
+            AI-assisted research process to gather and synthesize information
+            from multiple sources. The output: a comprehensive market
+            intelligence report plus a condensed summary for leadership
+            decision-making.
+          </p>
+          <div class="mini-pipeline">
+            <span class="step">Research Scope</span>
+            <span class="arrow">→</span>
+            <span class="step">AI-Assisted Research</span>
+            <span class="arrow">→</span>
+            <span class="step">Intelligence Report</span>
+          </div>
+          <div class="role-line">
+            <b>My role:</b> scoping, directing research, fact-checking, executive summary writing
+          </div>
+        </div>
+
+        <div class="project-card">
+          <span class="project-tag"><span class="dot"></span>Reporting Automation</span>
+          <h3>Sales Performance Reporting Automation</h3>
+          <p>
+            I designed a standardized Excel structure for analyzing regional
+            sales performance, then built a repeatable process — directed
+            through Claude — that turns that data into a polished, multi-page
+            PDF report ready for regional and leadership audiences, including
+            an anonymized version for sensitive presentations.
+          </p>
+          <div class="mini-pipeline">
+            <span class="step">Raw Sales Data</span>
+            <span class="arrow">→</span>
+            <span class="step">Standardized Excel Model</span>
+            <span class="arrow">→</span>
+            <span class="step">Automated PDF Report</span>
+          </div>
+          <div class="role-line">
+            <b>My role:</b> data structure design, reporting logic, building a reusable template for each period
+          </div>
+        </div>
+
+        <div class="project-card">
+          <span class="project-tag"><span class="dot"></span>Feasibility Study</span>
+          <h3>Feasibility Study for a Factory Partnership</h3>
+          <p>
+            For a cross-company manufacturing partnership project, I
+            coordinated inputs from multiple stakeholders and iteratively
+            built a multi-sheet Excel feasibility model covering several
+            financing scenarios. Since I'm not from a finance background, I
+            worked with Claude to translate the model's logic and outputs into
+            plain language for non-finance stakeholders.
+          </p>
+          <div class="mini-pipeline">
+            <span class="step">Partner Inputs</span>
+            <span class="arrow">→</span>
+            <span class="step">Financial Model</span>
+            <span class="arrow">→</span>
+            <span class="step">Plain-Language Summary</span>
+          </div>
+          <div class="role-line">
+            <b>My role:</b> stakeholder coordination, model structuring, plain-language communication
+          </div>
+        </div>
+
+        <div class="project-card wip">
+          <span class="project-tag"><span class="dot"></span>In Progress</span>
+          <h3>End-to-End Business Process Map</h3>
+          <p>
+            Currently mapping out the company's full sales-to-cash process —
+            from RFQ to payment — as an interactive diagram. The goal is to
+            give different teams a shared, visual reference for how their work
+            connects, and where handoffs happen.
+          </p>
+          <div class="mini-pipeline">
+            <span class="step">RFQ</span>
+            <span class="arrow">→</span>
+            <span class="step">Fulfillment</span>
+            <span class="arrow">→</span>
+            <span class="step">Invoice</span>
+            <span class="arrow">→</span>
+            <span class="step">Payment</span>
+          </div>
+          <div class="role-line">
+            <b>My role:</b> process mapping, cross-functional documentation — work in progress
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <span class="section-num mono">04</span>
+      </div>
+
+      <div class="exp-current">
+        <div class="exp-head">
+          <h3>Data Analyst — GoCement</h3>
+          <span class="exp-meta">Oct 2023 — Present</span>
+        </div>
+        <p class="exp-sub">Surabaya, Indonesia · On-site</p>
+        <ul class="exp-list">
+          <li>Built a company-wide revenue dashboard to track sales performance</li>
+          <li>Analyzed 500+ pipeline projects to identify constraints and inform strategy</li>
+          <li>Led a geospatial project website mapping 1,000+ construction projects, vendors, and customers nationwide</li>
+          <li>Led AI-assisted corporate due diligence, including shareholder tracing and risk assessment</li>
+          <li>Conducted AI-assisted market research for new business opportunities</li>
+          <li>Built a feasibility study and financial model for a factory partnership project</li>
+          <li class="wip-line">Currently mapping an end-to-end business process (RFQ to Payment) — in progress</li>
+        </ul>
+      </div>
+
+      <div class="exp-earlier">
+        <div class="exp-row">
+          <div>
+            <div class="role">Data Administration — Key Account Management</div>
+            <div class="org">PT Sarihusada Generasi Mahardika</div>
+          </div>
+          <div class="when mono">2022 — 2023</div>
+        </div>
+        <div class="exp-row">
+          <div>
+            <div class="role">Data Administration — Regional</div>
+            <div class="org">PT Sarihusada Generasi Mahardika</div>
+          </div>
+          <div class="when mono">2020 — 2022</div>
+        </div>
+        <div class="exp-row">
+          <div>
+            <div class="role">Assistant Instructor, Data Analysis</div>
+            <div class="org">Skill Academy by Ruangguru</div>
+          </div>
+          <div class="when mono">2023</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="education">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Education</h2>
+        <span class="section-num mono">05</span>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-head">
+          <h3>M.MT, Information Technology Management</h3>
+          <span class="edu-when mono">Jan 2021 — Apr 2026</span>
+        </div>
+        <p class="edu-org">Institut Teknologi Sepuluh Nopember (ITS)</p>
+        <div class="edu-detail">
+          <div>
+            <div class="label">Thesis</div>
+            <div class="value">
+              "Analisis Model TOE pada Digital Technology Innovation E-Commerce
+              untuk Rekomendasi Peningkatan Seller Revenue dengan SEM-PLS"
+            </div>
+            <div class="value thesis-en">
+              TOE Model Analysis of Digital Technology Innovation in
+              E-Commerce: Recommendations for Improving Seller Revenue Using
+              SEM-PLS
+            </div>
+          </div>
+          <div>
+            <span class="gpa-badge">GPA 3.73 / 4.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-head">
+          <h3>S.Tr.T, Telecommunication Engineering</h3>
+        </div>
+        <p class="edu-org" style="margin-bottom:0;">Politeknik Elektronika Negeri Surabaya (PENS)</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="certifications">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Certifications</h2>
+        <span class="section-num mono">06</span>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-group">
+          <h3>Data Analytics</h3>
+          <ul class="cert-list">
+            <li>Data Analytics Bootcamp — Kominfo x DQLab</li>
+            <li>Online Course: Data Analytics — RevoU</li>
+            <li>PCAP: Programming Essentials in Python — Python Institute</li>
+          </ul>
+        </div>
+        <div class="cert-group teal">
+          <h3>Data Visualization</h3>
+          <ul class="cert-list">
+            <li>Analyzing &amp; Visualizing Data with Microsoft Power BI — Udemy</li>
+            <li>Tableau Data Analyst Certification Prep — Udemy</li>
+            <li>Google Data Studio (Looker Studio)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="contact wrap" id="contact">
+  <h2>Let's talk</h2>
+  <p class="lede">
+    Open to opportunities in data analytics, data visualization, and
+    AI-assisted workflows — and excited about where that could go with Apple
+    Developer Academy.
+  </p>
+  <div class="contact-links">
+    <a class="pill-link primary" href="mailto:divairmaay@gmail.com">divairmaay@gmail.com</a>
+    <a class="pill-link" href="https://www.linkedin.com/in/divairmaa/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="pill-link" href="https://github.com/divairmaaa" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-bottom">
+    <span>Diva Irma Ayunita — Data Analyst</span>
+    <span>Surabaya, East Java, Indonesia</span>
+  </div>
+</footer>
+
+</body>
+</html>
