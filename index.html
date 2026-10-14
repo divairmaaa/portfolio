@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diva Irma Ayunita Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Data Analyst in Surabaya. Dashboards, pipeline analysis and reporting for sales teams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Concept: an analyst's grid. Graph-paper ground, spreadsheet index in the hero, work shown as the screens themselves. */
+:root{
+  --paper:#F3F5F8; --grid:#DCE2EC; --ink:#101A2E; --ink-2:#47566F; --surface:#FFFFFF; --line:#D2D9E4;
+  --accent:#1F4FD8; --accent-ink:#FFFFFF; --accent-soft:#E3EAFB;
+  --teal:#0E8A7B; --amber:#B8730A; --amber-soft:#FBF0DC; --green:#12805C; --green-soft:#DDF3EA; --red:#C2413B;
+  --map-dot:#C9D2E1; --shadow:0 1px 0 rgba(16,26,46,.06),0 22px 44px -26px rgba(16,26,46,.38);
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Public Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C1424; --grid:#18233A; --ink:#E9EEF9; --ink-2:#9DADC8; --surface:#121D33; --line:#25324E;
+    --accent:#7EA4FF; --accent-ink:#0C1424; --accent-soft:#1B2B53;
+    --teal:#4FD1C3; --amber:#F0B24A; --amber-soft:#35290F; --green:#4FD1A5; --green-soft:#12342A; --red:#FF8A80;
+    --map-dot:#2A3856; --shadow:0 1px 0 rgba(0,0,0,.4),0 22px 44px -26px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C1424; --grid:#18233A; --ink:#E9EEF9; --ink-2:#9DADC8; --surface:#121D33; --line:#25324E;
+  --accent:#7EA4FF; --accent-ink:#0C1424; --accent-soft:#1B2B53;
+  --teal:#4FD1C3; --amber:#F0B24A; --amber-soft:#35290F; --green:#4FD1A5; --green-soft:#12342A; --red:#FF8A80;
+  --map-dot:#2A3856; --shadow:0 1px 0 rgba(0,0,0,.4),0 22px 44px -26px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.6 var(--f-body);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--f-display);margin:0;text-wrap:balance;color:var(--ink)}
+h1{font-size:clamp(2.15rem,4.8vw,3.6rem);line-height:1.04;font-weight:800;letter-spacing:-.025em}
+h2{font-size:clamp(1.65rem,3vw,2.25rem);line-height:1.1;font-weight:700;letter-spacing:-.02em}
+h3{font-size:1.5rem;line-height:1.15;font-weight:700;letter-spacing:-.015em}
+p{margin:0}
+.wrap{max-width:1160px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;padding-block:12px}
+.brand{font:700 1.05rem var(--f-display);color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.top nav{display:flex;gap:6px 18px;flex-wrap:wrap}
+.top nav a{color:var(--ink-2);text-decoration:none;font-size:.92rem;font-weight:500;padding:4px 0}
+.top nav a:hover{color:var(--accent)}
+
+/* hero */
+.hero{position:relative;padding-block:56px 64px;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px;background-position:-1px -1px}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--paper));pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:48px;align-items:center}
+.hero-copy{display:flex;flex-direction:column;gap:22px;max-width:34rem}
+.hero-copy p{color:var(--ink-2);font-size:1.08rem;max-width:32rem}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 .95rem var(--f-body);text-decoration:none;border-radius:10px;padding:11px 18px;border:1.5px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer}
+.btn.fill{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover{transform:translateY(-1px)}
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;font-size:.9rem;font-variant-numeric:tabular-nums}
+.sheet .row{display:grid;grid-template-columns:34px minmax(0,1.7fr) minmax(0,1fr) minmax(0,1.3fr);text-decoration:none;color:var(--ink)}
+.sheet .row>*{padding:10px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0;overflow-wrap:anywhere}
+.sheet .row>*:last-child{border-right:0}
+.sheet .row:last-child>*{border-bottom:0}
+.sheet .head>*{background:var(--accent-soft);color:var(--ink-2);font-weight:600;font-size:.78rem;text-align:center;padding-block:7px}
+.sheet .num{background:var(--accent-soft);color:var(--ink-2);font-size:.78rem;text-align:center;padding-inline:0}
+.sheet a.row:hover .c{background:var(--accent-soft)}
+.sheet .c.sel{outline:2px solid var(--accent);outline-offset:-2px}
+.sheet .c b{font-weight:600}
+.sheet-note{margin-top:10px;font-size:.82rem;color:var(--ink-2)}
+
+/* sections */
+section{padding-block:72px}
+.sec-head{display:flex;flex-direction:column;gap:10px;max-width:40rem;margin-bottom:12px}
+.sec-head p{color:var(--ink-2)}
+
+/* work */
+.work{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:44px;align-items:center;padding-block:60px;border-top:1px solid var(--line)}
+.work:nth-of-type(even) .work-text{order:2}
+.work-text{display:flex;flex-direction:column;gap:16px;min-width:0}
+.work-text>p{color:var(--ink-2)}
+.facts{margin:0;display:flex;flex-direction:column;gap:10px}
+.facts div{display:grid;grid-template-columns:84px minmax(0,1fr);gap:12px;font-size:.95rem}
+.facts dt{color:var(--ink-2);font-weight:500}
+.facts dd{margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0;list-style:none}
+.tags li{font-size:.82rem;font-weight:500;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);padding:3px 10px;border-radius:999px}
+.vis{margin:0;min-width:0}
+.vis figcaption{margin-top:12px;font-size:.82rem;color:var(--ink-2)}
+.frame{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.win-bar{display:flex;align-items:center;gap:6px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--paper)}
+.win-bar i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.win-bar span{margin-left:8px;font-size:.78rem;color:var(--ink-2);font-weight:500}
+.win-body{padding:16px;display:flex;flex-direction:column;gap:14px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters span{font-size:.78rem;border:1px solid var(--line);border-radius:8px;padding:4px 10px;color:var(--ink-2);background:var(--paper)}
+.filters b{color:var(--ink);font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.kpi span{font-size:.74rem;color:var(--ink-2)}
+.kpi b{font:700 1.25rem var(--f-display);font-variant-numeric:tabular-nums}
+.kpi.hi{background:var(--accent-soft);border-color:transparent}
+.panel{border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.panel h4{font:600 .85rem var(--f-body);color:var(--ink-2)}
+.bar-row{display:grid;grid-template-columns:86px minmax(0,1fr) 40px;gap:10px;align-items:center;font-size:.8rem;font-variant-numeric:tabular-nums}
+.bar-row b{text-align:right;font-weight:600}
+.track{position:relative;height:10px;border-radius:6px;background:var(--accent-soft)}
+.track i{position:absolute;left:0;top:0;height:100%;border-radius:6px;background:var(--accent);display:block}
+.track u{position:absolute;top:-4px;bottom:-4px;left:83.33%;width:2px;background:var(--ink);opacity:.7}
+.qcols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:end;height:96px}
+.qcol{display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;font-size:.74rem;color:var(--ink-2)}
+.qpair{display:flex;align-items:flex-end;gap:4px;height:70px}
+.qpair i{display:block;width:16px;border-radius:3px 3px 0 0}
+.qpair .t{background:transparent;border:1.5px solid var(--accent)}
+.qpair .a{background:var(--accent)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.76rem;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px;display:block}
+.sw-t{border:1.5px solid var(--accent)}
+.sw-a{background:var(--accent)}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}
+.tabs span{font-size:.8rem;font-weight:500;padding:5px 12px;border-radius:8px;color:var(--ink-2)}
+.tabs .on{background:var(--accent);color:var(--accent-ink)}
+.board{display:grid;grid-template-columns:repeat(4,minmax(128px,1fr));gap:10px;overflow-x:auto;padding-bottom:2px}
+.col{background:var(--paper);border-radius:10px;padding:8px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.col h4{font:600 .78rem var(--f-body);color:var(--ink-2);display:flex;justify-content:space-between}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;gap:2px;font-size:.78rem}
+.card b{font-weight:600}
+.card span{color:var(--ink-2);font-size:.72rem}
+.foot-note{font-size:.76rem;color:var(--ink-2)}
+.phone{width:min(100%,300px);margin-inline:auto;border:8px solid var(--ink);border-radius:36px;background:var(--surface);overflow:hidden;box-shadow:var(--shadow)}
+.phone .scr{padding:16px 14px 18px;display:flex;flex-direction:column;gap:12px}
+.phone h4{font:700 1rem var(--f-display)}
+.seg2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.seg2 span{text-align:center;font-size:.82rem;font-weight:600;padding:7px;border-radius:10px;border:1px solid var(--line);color:var(--ink-2)}
+.seg2 .on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.mini-kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-kpis .kpi b{font-size:1.1rem}
+.job{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;font-size:.82rem}
+.job-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.job-top b{font-weight:600}
+.job-top span.sub{display:block;color:var(--ink-2);font-size:.74rem}
+.pill{font-size:.7rem;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.pill.plan{background:var(--amber-soft);color:var(--amber)}
+.pill.site{background:var(--accent-soft);color:var(--accent)}
+.pill.done{background:var(--green-soft);color:var(--green)}
+.steps{display:flex;align-items:center;gap:0}
+.steps i{display:block;width:11px;height:11px;border-radius:50%;border:2px solid var(--line);background:var(--surface);flex:0 0 auto}
+.steps i.d{background:var(--accent);border-color:var(--accent)}
+.steps s{display:block;flex:1;height:2px;background:var(--line);text-decoration:none}
+.steps s.d{background:var(--accent)}
+.stepnames{display:flex;justify-content:space-between;font-size:.66rem;color:var(--ink-2)}
+.map{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:0}
+.map svg{display:block;width:100%;height:auto;background:var(--paper)}
+.map-side{padding:14px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:10px;font-size:.8rem}
+.map-side b{font-weight:600}
+.lay{display:flex;align-items:center;gap:8px;color:var(--ink-2)}
+.lay i{width:10px;height:10px;border-radius:50%;display:block;flex:0 0 auto}
+.dotp{fill:var(--map-dot)}
+.pin-p{fill:var(--accent);stroke:var(--surface);stroke-width:1.5}
+.pin-v{fill:var(--teal);stroke:var(--surface);stroke-width:1.5}
+.pin-c{fill:var(--amber);stroke:var(--surface);stroke-width:1.5}
+.cal-head{display:flex;justify-content:space-between;align-items:center;font-size:.85rem}
+.cal-head b{font:700 1rem var(--f-display)}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal .dow{font-size:.68rem;color:var(--ink-2);text-align:center;padding-bottom:2px}
+.cal .d{min-height:50px;border:1px solid var(--line);border-radius:6px;padding:3px 4px;font-size:.68rem;color:var(--ink-2);display:flex;flex-direction:column;gap:2px;min-width:0}
+.cal .d.x{border-color:transparent;background:transparent}
+.cal .p{display:block;height:6px;border-radius:3px}
+.p.reel{background:var(--accent)}.p.car{background:var(--teal)}.p.sto{background:var(--amber)}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.8rem}
+.flow span{border:1px solid var(--line);border-radius:8px;padding:4px 10px;background:var(--paper)}
+.flow em{font-style:normal;color:var(--ink-2)}
+.own{padding:8px 12px 4px}
+.own svg{display:block;width:100%;height:auto}
+.n-box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.n-main{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+.n-line{stroke:var(--ink-2);stroke-width:1.4;fill:none}
+.n-t{fill:var(--ink);font:600 12px var(--f-body)}
+.n-s{fill:var(--ink-2);font:400 10.5px var(--f-body)}
+.n-ok{fill:var(--green)}.n-mid{fill:var(--amber)}
+
+/* experience */
+.tl{display:flex;flex-direction:column}
+.job-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 32px;padding-block:24px;border-top:1px solid var(--line)}
+.job-row .when{color:var(--ink-2);font-size:.92rem;font-variant-numeric:tabular-nums}
+.job-row h3{font-size:1.15rem}
+.job-row .org{color:var(--ink-2);font-size:.95rem;margin-top:2px}
+.job-row ul{margin:10px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.job-row li{color:var(--ink)}
+.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 48px;margin-top:8px}
+.skills h3{font-size:1.05rem;margin-bottom:8px}
+.skills p{color:var(--ink-2)}
+.edu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 48px}
+.edu h3{font-size:1.1rem}
+.edu p{color:var(--ink-2);margin-top:4px}
+.contact{border-top:1px solid var(--line);padding-block:72px 64px}
+.mail{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:18px}
+.mail code{font:500 1rem var(--f-body);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;user-select:all;overflow-wrap:anywhere}
+.mail .ok{font-size:.85rem;color:var(--green);min-height:1em}
+footer{border-top:1px solid var(--line);padding-block:20px 28px;color:var(--ink-2);font-size:.85rem}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:36px}
+  .work{grid-template-columns:minmax(0,1fr);gap:26px;padding-block:44px}
+  .work:nth-of-type(even) .work-text{order:0}
+  .skills,.edu{grid-template-columns:minmax(0,1fr)}
+  section{padding-block:52px}
+}
+@media (max-width:560px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .job-row{grid-template-columns:minmax(0,1fr);gap:4px}
+  .map{grid-template-columns:minmax(0,1fr)}
+  .map-side{border-left:0;border-top:1px solid var(--line);flex-direction:row;flex-wrap:wrap;gap:8px 16px}
+  .bar-row{grid-template-columns:72px minmax(0,1fr) 36px}
+  .facts div{grid-template-columns:minmax(0,1fr);gap:2px}
+  .sheet .row{grid-template-columns:28px minmax(0,1.5fr) minmax(0,1fr)}
+  .sheet .row>*:nth-child(4){display:none}
+  .sheet .row>*:nth-child(3){border-right:0}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Diva Irma Ayunita</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a><a href="#experience">Experience</a><a href="#toolkit">Toolkit</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1>I turn sales and project data into numbers a team can act on.</h1>
+      <p>Data Analyst in Surabaya with five years of dashboards, reporting and pipeline analysis, from performance tracking across 40,000+ accounts to project intelligence for a construction trading company.</p>
+      <div class="links">
+        <a class="btn fill" href="#work">See the work</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div>
+      <div class="sheet" role="table" aria-label="Index of selected work">
+        <div class="row head" role="row"><span class="num"></span><span role="columnheader">A &nbsp;Project</span><span role="columnheader">B &nbsp;Type</span><span role="columnheader">C &nbsp;Scale</span></div>
+        <a class="row" href="#sales-east" role="row"><span class="num">1</span><span class="c sel"><b>Sales East dashboard</b></span><span class="c">Dashboard</span><span class="c">7 reps, 3 regions</span></a>
+        <a class="row" href="#pipeline" role="row"><span class="num">2</span><span class="c"><b>Pipeline intelligence</b></span><span class="c">Dashboard</span><span class="c">500+ pipelines</span></a>
+        <a class="row" href="#pump" role="row"><span class="num">3</span><span class="c"><b>Concrete pump monitoring</b></span><span class="c">Mobile web app</span><span class="c">Jobs and maintenance</span></a>
+        <a class="row" href="#geo" role="row"><span class="num">4</span><span class="c"><b>Geospatial project map</b></span><span class="c">Web map</span><span class="c">1,000+ projects</span></a>
+        <a class="row" href="#agent" role="row"><span class="num">5</span><span class="c"><b>Marketing content agent</b></span><span class="c">AI agent</span><span class="c">Monthly planner</span></a>
+        <a class="row" href="#research" role="row"><span class="num">6</span><span class="c"><b>Research and due diligence</b></span><span class="c">Analysis</span><span class="c">C-Level insight</span></a>
+      </div>
+      <p class="sheet-note">Click a row to jump to the project.</p>
+    </div>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Selected work</h2>
+      <p>Screens below use illustrative numbers. The live versions run on internal company data.</p>
+    </div>
+
+    <article class="work" id="sales-east">
+      <div class="work-text">
+        <h3>Sales East dashboard</h3>
+        <p>A live dashboard that gives the Sales East team one place to check target against actual, open orders, lost deals and pipeline.</p>
+        <dl class="facts">
+          <div><dt>What</dt><dd>Tracks 7 sales reps across East Java, Bali and Central Java, with filters by month, region and product line.</dd></div>
+          <div><dt>How</dt><dd>Reads six Google Sheets tabs on every open, so the numbers follow the source with no manual export.</dd></div>
+          <div><dt>Care</dt><dd>Totals are checked against the source sheets before each release.</dd></div>
+        </dl>
+        <ul class="tags"><li>Google Sheets</li><li>JavaScript</li><li>Netlify</li><li>Built with Claude</li></ul>
+      </div>
+      <figure class="vis">
+        <div class="frame">
+          <div class="win-bar"><i></i><i></i><i></i><span>Sales Dashboard · East</span></div>
+          <div class="win-body">
+            <div class="filters"><span>Month <b>All</b></span><span>Region <b>All</b></span><span>Product line <b>All</b></span></div>
+            <div class="kpis">
+              <div class="kpi"><span>Target (index)</span><b>100.0</b></div>
+              <div class="kpi"><span>Actual</span><b>96.4</b></div>
+              <div class="kpi hi"><span>Achievement</span><b>96%</b></div>
+              <div class="kpi"><span>Gap to target</span><b>3.6</b></div>
+            </div>
+            <div class="panel">
+              <h4>Achievement by region</h4>
+              <div class="bar-row"><span>East Java</span><div class="track"><i style="width:78%"></i><u></u></div><b>94%</b></div>
+              <div class="bar-row"><span>Bali</span><div class="track"><i style="width:90%"></i><u></u></div><b>108%</b></div>
+              <div class="bar-row"><span>Central Java</span><div class="track"><i style="width:72%"></i><u></u></div><b>87%</b></div>
+              <div class="foot-note">Dark tick marks 100% of target.</div>
+            </div>
+            <div class="panel">
+              <h4>Target vs actual by quarter</h4>
+              <div class="qcols">
+                <div class="qcol"><div class="qpair"><i class="t" style="height:60px"></i><i class="a" style="height:54px"></i></div>Q1</div>
+                <div class="qcol"><div class="qpair"><i class="t" style="height:62px"></i><i class="a" style="height:66px"></i></div>Q2</div>
+                <div class="qcol"><div class="qpair"><i class="t" style="height:64px"></i><i class="a" style="height:58px"></i></div>Q3</div>
+                <div class="qcol"><div class="qpair"><i class="t" style="height:66px"></i><i class="a" style="height:30px"></i></div>Q4</div>
+              </div>
+              <div class="legend"><span><i class="sw-t"></i>Target</span><span><i class="sw-a"></i>Actual</span></div>
+            </div>
+          </div>
+        </div>
+        <figcaption>Illustrative data. Layout follows the live dashboard.</figcaption>
+      </figure>
+    </article>
+
+    <article class="work" id="pipeline">
+      <div class="work-text">
+        <h3>Pipeline intelligence dashboard</h3>
+        <p>A single source of truth for project prospecting, so the BizDev team works from one clean list instead of several provider files.</p>
+        <dl class="facts">
+          <div><dt>What</dt><dd>Consolidates 500+ project pipelines from 3 data providers into four sheets: Projects, Supplied, Archived and Pipeline.</dd></div>
+          <div><dt>How</dt><dd>Apps Script moves records by column name, never by position, and shows a validation form before anything is moved or copied.</dd></div>
+          <div><dt>Care</dt><dd>Traced and fixed column-shift errors that came from the providers' own Excel files.</dd></div>
+        </dl>
+        <ul class="tags"><li>Google Sheets</li><li>Apps Script</li><li>HTML and JavaScript</li><li>AI-assisted</li></ul>
+      </div>
+      <figure class="vis">
+        <div class="frame">
+          <div class="win-bar"><i></i><i></i><i></i><span>Project Intelligence</span></div>
+          <div class="win-body">
+            <div class="tabs"><span>Projects</span><span>Supplied</span><span>Archived</span><span class="on">Pipeline</span></div>
+            <div class="board">
+              <div class="col"><h4>Prospect <span>3</span></h4>
+                <div class="card"><b>Warehouse extension</b><span>East Java</span></div>
+                <div class="card"><b>Hotel resort</b><span>Bali</span></div>
+                <div class="card"><b>Water plant</b><span>Central Java</span></div></div>
+              <div class="col"><h4>Proposal <span>2</span></h4>
+                <div class="card"><b>Factory expansion</b><span>West Java</span></div>
+                <div class="card"><b>Cold storage</b><span>East Java</span></div></div>
+              <div class="col"><h4>Negotiation <span>2</span></h4>
+                <div class="card"><b>Hospital wing</b><span>Banten</span></div>
+                <div class="card"><b>Logistics hub</b><span>East Java</span></div></div>
+              <div class="col"><h4>Supplied <span>1</span></h4>
+                <div class="card"><b>Office tower</b><span>Jakarta</span></div></div>
+            </div>
+            <div class="foot-note">26 core columns per record. Projects is the single source of truth; Pipeline holds a copy.</div>
+          </div>
+        </div>
+        <figcaption>Illustrative project names. Live data comes from licensed providers.</figcaption>
+      </figure>
+    </article>
+
+    <article class="work" id="pump">
+      <div class="work-text">
+        <h3>Concrete pump monitoring app</h3>
+        <p>A mobile web app that replaced reporting over WhatsApp for a concrete pump rental operation.</p>
+        <dl class="facts">
+          <div><dt>What</dt><dd>Two parts: Job (schedule, stages, planned against realised volume) and Maintenance (service, purchases, fuel and oil).</dd></div>
+          <div><dt>How</dt><dd>Each job moves through Planning, Departed, Arrived, Done and Back at pool, with camera photos stamped with GPS. Installs on the phone's home screen.</dd></div>
+          <div><dt>Care</dt><dd>Built with the field team's feedback: everyone can enter and view, and each change shows who made it.</dd></div>
+        </dl>
+        <ul class="tags"><li>Progressive web app</li><li>Google Sheets</li><li>Apps Script</li><li>Netlify</li><li>Built with Claude</li></ul>
+      </div>
+      <figure class="vis">
+        <div class="phone">
+          <div class="scr">
+            <h4>Monitoring Concrete Pump</h4>
+            <div class="seg2"><span class="on">Job</span><span>Maintenance</span></div>
+            <div class="mini-kpis">
+              <div class="kpi"><span>Jobs this month</span><b>18</b></div>
+              <div class="kpi hi"><span>Realised</span><b>412 m³</b></div>
+            </div>
+            <div class="job">
+              <div class="job-top"><div><b>Residential cluster</b><span class="sub">Denpasar · 12 km</span></div><span class="pill site">On site</span></div>
+              <div class="steps" aria-hidden="true"><i class="d"></i><s class="d"></s><i class="d"></i><s class="d"></s><i class="d"></i><s></s><i></i><s></s><i></i></div>
+              <div class="stepnames"><span>Plan</span><span>Depart</span><span>Arrive</span><span>Done</span><span>Pool</span></div>
+              <div>Planned 60 m³</div>
+            </div>
+            <div class="job">
+              <div class="job-top"><div><b>Villa foundation</b><span class="sub">Badung · 8 km</span></div><span class="pill done">Done</span></div>
+              <div>Planned 45 m³ · Realised 42 m³</div>
+            </div>
+            <div class="job">
+              <div class="job-top"><div><b>Road widening</b><span class="sub">Gianyar · 20 km</span></div><span class="pill plan">Planning</span></div>
+              <div>Planned 80 m³</div>
+            </div>
+          </div>
+        </div>
+        <figcaption>Illustrative data. Screen layout simplified from the live app.</figcaption>
+      </figure>
+    </article>
+
+    <article class="work" id="geo">
+      <div class="work-text">
+        <h3>Geospatial project map</h3>
+        <p>A nationwide map of construction projects, vendors and customers, so the business team can see where activity is and who is nearby.</p>
+        <dl class="facts">
+          <div><dt>Scale</dt><dd>1,000+ projects, vendors and customers across Indonesia.</dd></div>
+          <div><dt>My role</dt><dd>Person in charge: defined the concept and requirements, coordinated the vendors who built it, and ran the analysis on top.</dd></div>
+        </dl>
+        <ul class="tags"><li>Product requirements</li><li>Vendor coordination</li><li>Geospatial analysis</li></ul>
+      </div>
+      <figure class="vis">
+        <div class="frame">
+          <div class="map">
+            <svg id="mapsvg" viewBox="0 0 400 150" role="img" aria-label="Stylised dot map of Indonesia with project, vendor and customer pins"></svg>
+            <div class="map-side">
+              <b>Layers</b>
+              <span class="lay"><i style="background:var(--accent)"></i>Projects</span>
+              <span class="lay"><i style="background:var(--teal)"></i>Vendors</span>
+              <span class="lay"><i style="background:var(--amber)"></i>Customers</span>
+            </div>
+          </div>
+        </div>
+        <figcaption>Stylised map with illustrative pin positions.</figcaption>
+      </figure>
+    </article>
+
+    <article class="work" id="agent">
+      <div class="work-text">
+        <h3>Marketing content agent</h3>
+        <p>An AI agent that helps plan and draft social media content against a written brand guide.</p>
+        <dl class="facts">
+          <div><dt>What</dt><dd>A brand guide with colours, tone of voice and prompts, plus a monthly content planner that includes Indonesian national holidays.</dd></div>
+          <div><dt>How</dt><dd>The agent drafts posts from the planner. A person reviews every draft before it goes out.</dd></div>
+        </dl>
+        <ul class="tags"><li>Claude</li><li>n8n</li><li>Brand guide</li><li>Content planning</li></ul>
+      </div>
+      <figure class="vis">
+        <div class="frame">
+          <div class="win-bar"><i></i><i></i><i></i><span>Content planner</span></div>
+          <div class="win-body">
+            <div class="cal-head"><b>October</b><div class="legend"><span><i style="background:var(--accent)"></i>Reel</span><span><i style="background:var(--teal)"></i>Carousel</span><span><i style="background:var(--amber)"></i>Story</span></div></div>
+            <div class="cal" id="calgrid" aria-label="Month grid with scheduled posts"></div>
+            <div class="flow"><span>Plan</span><em>→</em><span>Draft with Claude</span><em>→</em><span>Review</span><em>→</em><span>Publish</span></div>
+          </div>
+        </div>
+        <figcaption>Illustrative schedule.</figcaption>
+      </figure>
+    </article>
+
+    <article class="work" id="research">
+      <div class="work-text">
+        <h3>Research and due diligence</h3>
+        <p>Company and project research that gives C-Level a clear picture of who owns what and where the risks are, before a conversation starts. It supports their thinking and does not replace their decision.</p>
+        <dl class="facts">
+          <div><dt>What</dt><dd>Ownership tracing, risk checks and market research on companies and projects, delivered as short reports with a consistent template.</dd></div>
+          <div><dt>How</dt><dd>AI tools read and cross-check public records and documents. I define the questions, verify the findings and write the summary.</dd></div>
+          <div><dt>Also</dt><dd>I handle e-procurement monitoring for tender opportunities.</dd></div>
+        </dl>
+        <ul class="tags"><li>Corporate research</li><li>Risk assessment</li><li>E-procurement</li><li>AI-assisted</li></ul>
+      </div>
+      <figure class="vis">
+        <div class="frame">
+          <div class="own">
+            <svg viewBox="0 0 420 250" role="img" aria-label="Illustrative ownership map: three shareholders own a target company, which is linked to two affiliated companies">
+              <rect class="n-box" x="4" y="26" width="112" height="52" rx="8"/><text class="n-t" x="14" y="48">Person A</text><text class="n-s" x="14" y="65">55% shareholder</text>
+              <rect class="n-box" x="4" y="98" width="112" height="52" rx="8"/><text class="n-t" x="14" y="120">Company B</text><text class="n-s" x="14" y="137">30% shareholder</text>
+              <rect class="n-box" x="4" y="170" width="112" height="52" rx="8"/><text class="n-t" x="14" y="192">Person C</text><text class="n-s" x="14" y="209">15% shareholder</text>
+              <path class="n-line" d="M116 52 H133 V124 H150"/><path class="n-line" d="M116 124 H150"/><path class="n-line" d="M116 196 H133 V124 H150"/>
+              <rect class="n-main" x="150" y="98" width="120" height="52" rx="8"/><text class="n-t" x="162" y="120">Target company</text><text class="n-s" x="162" y="137">Under review</text>
+              <path class="n-line" d="M270 124 H287 V52 H304"/><path class="n-line" d="M270 124 H287 V196 H304"/>
+              <rect class="n-box" x="304" y="26" width="112" height="52" rx="8"/><text class="n-t" x="314" y="48">Company D</text><text class="n-s" x="314" y="65">Shared director</text><circle class="n-mid" cx="402" cy="38" r="5"/>
+              <rect class="n-box" x="304" y="170" width="112" height="52" rx="8"/><text class="n-t" x="314" y="192">Company E</text><text class="n-s" x="314" y="209">Same address</text><circle class="n-ok" cx="402" cy="182" r="5"/>
+            </svg>
+            <div class="legend" style="padding:0 4px 10px"><span><i class="n-ok" style="border-radius:50%;background:var(--green)"></i>No flag</span><span><i style="border-radius:50%;background:var(--amber)"></i>Needs a closer look</span></div>
+          </div>
+        </div>
+        <figcaption>Illustrative structure with invented names.</figcaption>
+      </figure>
+    </article>
+  </div>
+</section>
+
+<section id="experience" style="padding-top:24px">
+  <div class="wrap">
+    <div class="sec-head"><h2>Experience</h2></div>
+    <div class="tl">
+      <div class="job-row">
+        <div class="when">Oct 2023 to now</div>
+        <div>
+          <h3>Data Analyst, Business Development</h3>
+          <div class="org">PT Mitra Bangun Konstruksi Megah (GoCement), Surabaya</div>
+          <ul>
+            <li>Analyzed quarterly and monthly sales trends from 18 months of data and delivered recommendations to C-Level.</li>
+            <li>Consolidated 500+ project pipelines from 3 data sources into one dashboard.</li>
+            <li>Built the Sales East dashboard for 7 reps across East Java, Bali and Central Java.</li>
+            <li>Built and deployed a concrete pump monitoring web app, and an AI agent for marketing content.</li>
+            <li>Person in charge of a geospatial website covering 1,000+ projects, vendors and customers.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job-row">
+        <div class="when">Sep to Nov 2023</div>
+        <div>
+          <h3>Assistant Instructor (freelance)</h3>
+          <div class="org">Skill Academy by Ruangguru, remote</div>
+          <ul><li>Assisted the Data Analysis course and ran practical training in R and Looker Studio.</li></ul>
+        </div>
+      </div>
+      <div class="job-row">
+        <div class="when">Dec 2020 to Oct 2023</div>
+        <div>
+          <h3>Data Administration, Key Account Management and Regional</h3>
+          <div class="org">PT Sarihusada Generasi Mahardika, Surabaya</div>
+          <ul>
+            <li>Built and maintained a performance dashboard for 40,000+ accounts and 10 products.</li>
+            <li>Built a scorecard for C-Level and managers on Key Account performance.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="toolkit" style="padding-top:24px">
+  <div class="wrap">
+    <div class="sec-head"><h2>Toolkit and education</h2></div>
+    <div class="skills">
+      <div><h3>Analytics and BI</h3><p>Excel, Google Sheets, Power BI, Looker Studio, Tableau, BigQuery, Apps Script, automated reporting</p></div>
+      <div><h3>Business analysis</h3><p>Sales performance analysis, pipeline management, market and competitor research, corporate due diligence</p></div>
+      <div><h3>AI and automation</h3><p>Claude, prompt engineering, scheduled AI agents with n8n</p></div>
+      <div><h3>Working style</h3><p>Detail-oriented, clear communicator, comfortable working across teams and with leadership</p></div>
+    </div>
+    <div class="edu" style="margin-top:40px">
+      <div><h3>Master of Management of Information Technology</h3><p>Institut Teknologi Sepuluh Nopember, 2021 to 2026. GPA 3.73 / 4.00. Thesis on technology adoption in e-commerce using SEM-PLS.</p></div>
+      <div><h3>Bachelor of Telecommunication Engineering</h3><p>Politeknik Elektronika Negeri Surabaya, 2016 to 2020. GPA 3.56 / 4.00, Cum Laude.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Let's talk</h2>
+      <p>Open to Data Analyst roles where sales, distribution and market data drive the plan.</p>
+    </div>
+    <div class="links" style="margin-top:8px">
+      <a class="btn" href="https://www.linkedin.com/in/divairmaa/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/divairmaaa" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="mail">
+      <code id="mailtxt">divairmaay@gmail.com</code>
+      <button class="btn fill" id="copymail" type="button">Copy email</button>
+      <span class="ok" id="copyok" role="status"></span>
+    </div>
+  </div>
+</div>
+</main>
+<footer><div class="wrap">Diva Irma Ayunita · Surabaya, Indonesia</div></footer>
+
+<script>
+(function(){
+  /* dot map */
+  var NS="http://www.w3.org/2000/svg", svg=document.getElementById("mapsvg");
+  var isl=[
+    [[18,30],[40,28],[75,55],[115,95],[125,115],[105,120],[70,100],[35,70]],
+    [[135,122],[215,118],[215,128],[140,133]],
+    [[150,55],[175,38],[205,45],[215,70],[205,100],[175,108],[155,90]],
+    [[235,55],[250,50],[252,70],[262,80],[256,90],[246,84],[244,100],[236,98],[238,75]],
+    [[300,60],[345,52],[375,75],[385,100],[340,100],[318,88],[300,85]],
+    [[275,70],[290,68],[292,82],[278,84]],
+    [[219,121],[229,121],[229,131],[219,131]],
+    [[233,123],[247,123],[247,131],[233,131]],
+    [[251,125],[266,125],[266,133],[251,133]]
+  ];
+  function inside(x,y,p){var c=false;for(var i=0,j=p.length-1;i<p.length;j=i++){var xi=p[i][0],yi=p[i][1],xj=p[j][0],yj=p[j][1];if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi))c=!c;}return c;}
+  function mk(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  for(var y=22;y<140;y+=5){for(var x=10;x<395;x+=5){for(var i=0;i<isl.length;i++){if(inside(x,y,isl[i])){svg.appendChild(mk("circle",{cx:x,cy:y,r:1.25,"class":"dotp"}));break;}}}}
+  var pins=[["p",150,127],["v",165,126],["p",180,125],["c",195,124],["p",208,125],["v",50,50],["p",80,70],["c",100,95],["p",60,52],["p",170,60],["v",190,75],["c",185,95],["p",248,65],["v",244,92],["p",223,126],["c",330,78],["p",355,85],["v",134,119],["c",122,112],["p",282,76]];
+  pins.forEach(function(p){svg.appendChild(mk("circle",{cx:p[1],cy:p[2],r:3.6,"class":"pin-"+p[0]}));});
+
+  /* content calendar: October 2026 starts on a Thursday */
+  var g=document.getElementById("calgrid"), dows=["M","T","W","T","F","S","S"];
+  dows.forEach(function(d){var e=document.createElement("div");e.className="dow";e.textContent=d;g.appendChild(e);});
+  var lead=3, total=31, posts={2:["reel"],5:["car"],7:["sto"],9:["reel","sto"],12:["car"],14:["reel"],16:["sto"],19:["car"],21:["reel"],23:["car","sto"],26:["reel"],28:["car"],30:["sto"]};
+  for(var i=0;i<lead;i++){var b=document.createElement("div");b.className="d x";g.appendChild(b);}
+  for(var d=1;d<=total;d++){
+    var c=document.createElement("div");c.className="d";c.textContent=d;
+    (posts[d]||[]).forEach(function(t){var s=document.createElement("span");s.className="p "+t;c.appendChild(s);});
+    g.appendChild(c);
+  }
+
+  /* copy email */
+  var btn=document.getElementById("copymail"), ok=document.getElementById("copyok"), txt=document.getElementById("mailtxt");
+  btn.addEventListener("click",function(){
+    function sel(){try{var r=document.createRange();r.selectNodeContents(txt);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}catch(e){}ok.textContent="Press copy on the selected address.";}
+    try{
+      navigator.clipboard.writeText(txt.textContent).then(function(){ok.textContent="Copied";setTimeout(function(){ok.textContent="";},2200);},sel);
+    }catch(e){sel();}
+  });
+})();
+</script>
+
+</body>
+</html>
